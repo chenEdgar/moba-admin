@@ -35,6 +35,10 @@ export default {
           prop: "_id",
         },
         {
+          label: "父级分类",
+          prop: "parent.name",
+        },
+        {
           label: "分类名称",
           prop: "name",
         },
