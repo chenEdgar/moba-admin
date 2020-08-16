@@ -9,6 +9,18 @@
         :width="col.width"
       >
       </el-table-column>
+
+      <el-table-column fixed="right" label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button @click="onEdit(scope.row)" type="text" size="small"
+            >编辑</el-button
+          >
+
+          <el-button @click="onDelete(scope.row)" type="text" size="small"
+            >删除</el-button
+          >
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -44,6 +56,34 @@ export default {
         .catch((err) => {
           console.error(err);
         });
+    },
+
+    onEdit(row) {
+      this.$router.push(`/category/edit/${row._id}`);
+    },
+
+    onDelete(row) {
+      this.$confirm(`是否删除${row.name}?`, "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.$axios
+          .delete(`/admin/api/categories/${row._id}`)
+          .then((resp) => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.getList();
+          })
+          .catch((e) => {
+            this.$message({
+              type: "error",
+              message: err,
+            });
+          });
+      });
     },
   },
 };

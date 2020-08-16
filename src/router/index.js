@@ -18,6 +18,12 @@ const routes = [
         component: CategoryEdit,
       },
       {
+        path: "/category/edit/:id",
+        name: "CategoryEdit",
+        component: CategoryEdit,
+        props: true,
+      },
+      {
         path: "/category/list",
         name: "CategoryList",
         component: CategoryList,
