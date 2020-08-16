@@ -53,7 +53,7 @@ export default {
   methods: {
     getList() {
       this.$axios
-        .get("admin/api/categories")
+        .get("/rest/categories")
         .then((res) => {
           this.list = res.data;
         })
@@ -73,7 +73,7 @@ export default {
         type: "warning",
       }).then(() => {
         this.$axios
-          .delete(`/admin/api/categories/${row._id}`)
+          .delete(`/rest/categories/${row._id}`)
           .then((resp) => {
             this.$message({
               type: "success",

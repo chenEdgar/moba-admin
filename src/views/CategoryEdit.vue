@@ -55,13 +55,13 @@ export default {
       this.getParentClassify();
 
       if (this.isEdit) {
-        this.$axios.get(`/admin/api/categories/${this.id}`).then((res) => {
+        this.$axios.get(`/rest/categories/${this.id}`).then((res) => {
           this.form = res.data;
         });
       }
     },
     getParentClassify() {
-      this.$axios.get(`/admin/api/categories`).then((res) => {
+      this.$axios.get(`/rest/categories`).then((res) => {
         this.parentClassify = res.data;
       });
     },
@@ -73,11 +73,11 @@ export default {
 
       if (this.isEdit) {
         promise = this.$axios.put(
-          `/admin/api/categories/${this.id}`,
+          `/rest/categories/${this.id}`,
           data
         );
       } else {
-        promise = this.$axios.post("/admin/api/categories", data);
+        promise = this.$axios.post("/rest/categories", data);
       }
 
       promise
