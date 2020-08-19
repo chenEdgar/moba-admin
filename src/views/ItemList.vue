@@ -7,6 +7,7 @@
         :key="col.prop"
         :label="col.label"
         :width="col.width"
+        v-bind="col"
       >
       </el-table-column>
 
@@ -41,6 +42,9 @@ export default {
          {
           label: "图标",
           prop: "icon",
+          formatter: ({icon})=>{
+            return <img src={icon} style="width: 48px"/>
+          }
         },
       ],
       list: [],
