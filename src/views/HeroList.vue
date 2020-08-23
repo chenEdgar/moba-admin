@@ -39,6 +39,10 @@ export default {
           label: "英雄名",
           prop: "name",
         },
+        {
+          label: "称号",
+          prop: "title",
+        },
          {
           label: "头像",
           prop: "avatar",

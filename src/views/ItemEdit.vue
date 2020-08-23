@@ -2,10 +2,10 @@
   <div class="item-edit">
     <h2>{{ isEdit ? "编辑" : "新增" }}物品</h2>
     <el-form :model="form" ref="form" label-width="80px">
-      <el-form-item label="物品名">
+      <el-form-item label="物品名" prop="name">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="图标">
+      <el-form-item label="图标" prop="icon">
         <el-upload
           class="avatar-uploader"
           :action="`${$axios.defaults.baseURL}/uploads`"
@@ -75,7 +75,6 @@ export default {
       let promise = null;
 
       const data = { ...this.form };
-      !this.form.parent && delete data.parent;
 
       if (this.isEdit) {
         promise = this.$axios.put(`/rest/items/${this.id}`, data);
@@ -91,7 +90,8 @@ export default {
             message: "保存成功",
           });
 
-          this.$router.push("/item/list");
+          // this.$router.push("/item/list");
+          this.$refs.form.resetFields()
         })
         .catch((err) => {
           console.error(err);
