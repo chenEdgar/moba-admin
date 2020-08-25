@@ -13,6 +13,9 @@ import HeroList from "../views/HeroList.vue";
 import ArticleEdit from "../views/ArticleEdit.vue";
 import ArticleList from "../views/ArticleList.vue";
 
+
+import AdsEdit from "../views/AdsEdit.vue";
+import AdsList from "../views/AdsList.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -87,6 +90,24 @@ const routes = [
         path: "/article/list",
         name: "ArticleList",
         component: ArticleList,
+      },
+
+
+      {
+        path: "/ads/create",
+        name: "AdsCreate",
+        component: AdsEdit,
+      },
+      {
+        path: "/ads/edit/:id",
+        name:  "AdsEdit",
+        component: AdsEdit,
+        props: true,
+      },
+      {
+        path: "/ads/list",
+        name: "AdsList",
+        component: AdsList,
       },
     ],
   },
